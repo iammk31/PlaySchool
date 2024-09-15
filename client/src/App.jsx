@@ -4,6 +4,7 @@ import Home from "./Components/Home";
 import Programs from "./Components/Programs";
 import Programs2 from "./Components/Programs2";
 import Footer from "./Components/Footer";
+import EduKidNews from "./Components/News";
 
 function App() {
 
@@ -16,9 +17,9 @@ function App() {
           <Home />
           <Programs />
           <Programs2 />
+          <EduKidNews />
           <Footer />
         </>} />
-
       </Routes>
     </Router>
   )

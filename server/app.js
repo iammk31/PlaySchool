@@ -1,6 +1,5 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import cors from 'cors';
 import { dbConnection } from './database/dbConnection.js';
 import { errorMiddleware } from './middleware/error.js';
 

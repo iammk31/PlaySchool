@@ -25,8 +25,7 @@ const Navbar = () => {
 
   return (
 
-    <header className="bg-teal-500 text-white flex "
-      >
+    <header className="bg-teal-500 text-white flex ">
 
       <div className="container mx-auto flex justify-between items-center py-3 px-5 flex-1">
         <div className="flex items-center">
@@ -44,17 +43,19 @@ const Navbar = () => {
         </div>
 
 
-        <nav className="hidden md:flex space-x-6 font-medium navbarVisible ? 'top-0' : '-top-24"
-        >
+        <nav className="hidden md:flex space-x-6 font-medium navbarVisible ? 'top-0' : '-top-24">
           <a href="#home" className="hover:text-pink-200 transition-colors">
             Home
           </a>
           <a href="#about" className="hover:text-pink-200 transition-colors">
             About
           </a>
-          <a href="#programs" className="hover:text-pink-200 transition-colors">
+          <Link
+            to="/Programs"
+            className="hover:text-pink-200 transition-colors"
+          >
             Programs
-          </a>
+          </Link>
           <a href="#shops" className="hover:text-pink-200 transition-colors">
             Shops
           </a>
