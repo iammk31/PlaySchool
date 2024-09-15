@@ -34,7 +34,7 @@ const Navbar = () => {
             <img
               src="../../Images/Logo.png"
               alt="EduKid Logo"
-              className="w-13 h-11"
+              className="w-13 h-11 rounded-xl"
             />
           </Link>
           <div className="ml-2">

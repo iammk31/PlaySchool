@@ -20,11 +20,11 @@ const programData = [
     description: 'Musical indoor and outdoor activities that cater to all domains development!',
     buttonLabel: 'View Details',
     icon: '../../Images/music.png', 
-    bgColor: 'bg-teal-500',
-    textColor: 'text-white',
-    borderColor: 'border-teal-500',
-    btnBgColor: 'bg-white',
-    btnHoverBgColor: 'hover:bg-gray-200',
+    bgColor: 'bg-white',
+    textColor: 'text-gray-800',
+    borderColor: 'border-orange-300',
+    btnBgColor: 'bg-orange-500',
+    btnHoverBgColor: 'hover:bg-orange-600',
   },
   {
     id: 3,
@@ -45,7 +45,7 @@ const ProgramsSection = () => {
     <section className="py-16 px-8 lg:px-32 bg-pink-50">
       
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Programs</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-4 underline">Our Programs</h2>
         <p className="text-lg text-gray-600">
           Our multi-level kindergarten caters to the age groups 2-5 years with a curriculum focused on children.
         </p>
