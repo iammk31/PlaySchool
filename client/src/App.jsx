@@ -5,6 +5,7 @@ import Programs from "./Components/Programs";
 import Programs2 from "./Components/Programs2";
 import Footer from "./Components/Footer";
 import EduKidNews from "./Components/News";
+import ApplyNow from "./Components/ApplyNow";
 
 function App() {
 
@@ -18,9 +19,11 @@ function App() {
           <Programs />
           <Programs2 />
           <EduKidNews />
-          <Footer />
+
         </>} />
+        <Route path="/ApplyNow" element={<><ApplyNow /></>} />
       </Routes>
+      <Footer />
     </Router>
   )
 }
