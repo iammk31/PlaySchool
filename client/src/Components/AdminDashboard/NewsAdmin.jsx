@@ -16,7 +16,7 @@ const AdminDashboard = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get("http://localhost:4000/api/news");
+            const response = await axios.get("http://localhost:4000/api/news/news");
             setNewsData(response.data);
         } catch (error) {
             console.error("Error fetching news:", error);
@@ -33,7 +33,7 @@ const AdminDashboard = () => {
     const handleAddNews = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:4000/api/news", formData);
+            const response = await axios.post("http://localhost:4000/api/news/news", formData);
             setNewsData([...newsData, response.data]);
             setFormData({ title: "", author: "", imageUrl: "" });
         } catch (error) {
@@ -44,12 +44,13 @@ const AdminDashboard = () => {
     // Delete news
     const handleDeleteNews = async (id) => {
         try {
-            await axios.delete(`http://localhost:4000/api/news/${id}`);
+            await axios.delete(`http://localhost:4000/api/news/news/${id}`);
             setNewsData(newsData.filter((news) => news._id !== id));
         } catch (error) {
             console.error("Error deleting news:", error);
         }
     };
+    
 
     return (
         <div className="min-h-screen p-8 bg-gray-100">
@@ -92,6 +93,7 @@ const AdminDashboard = () => {
                 </div>
                 <button
                     type="submit"
+                    onClick={handleAddNews}
                     className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
                 >
                     Add News
