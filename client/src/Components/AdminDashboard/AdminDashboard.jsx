@@ -7,7 +7,7 @@ const Dashboard = () => {
   const cards = [
     { title: 'News', path: '/NewsAdmin' },
     { title: 'Programs', path: '' },
-    { title: 'Registration', path: '/registration' },
+    { title: 'Registration', path: '/RegistrationAdmin' },
     { title: 'Shops', path: '/shops' },
   ];
 

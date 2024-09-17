@@ -9,6 +9,7 @@ import LoginAdmin from "./Components/Auth/LoginAdmin";
 import AdminDashboard from "./Components/AdminDashboard/AdminDashboard";
 import NewsAdmin from "./Components/AdminDashboard/NewsAdmin";
 import News from "./Components/News";
+import RegistrationAdmin from "./Components/AdminDashboard/RegistrationAdmin";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/NewsAdmin" element={<><NewsAdmin /></>} />
         <Route path="/Admin" element={<LoginAdmin />} />
         <Route path="/News" element={<News />} />
+        <Route path="/RegistrationAdmin" element={<RegistrationAdmin />} />
       </Routes>
       <Footer />
     </Router>
