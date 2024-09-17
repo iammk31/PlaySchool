@@ -44,30 +44,24 @@ const Navbar = () => {
 
 
         <nav className="hidden md:flex space-x-6 font-medium navbarVisible ? 'top-0' : '-top-24">
-          <a href="#home" className="hover:text-pink-200 transition-colors">
-            Home
-          </a>
-          <a href="#about" className="hover:text-pink-200 transition-colors">
+          <Link to="#about" className="hover:text-pink-200 transition-colors">
             About
-          </a>
+          </Link>
           <Link
             to="/Programs"
             className="hover:text-pink-200 transition-colors"
           >
             Programs
           </Link>
-          <a href="#shops" className="hover:text-pink-200 transition-colors">
+          <Link to="#shops" className="hover:text-pink-200 transition-colors">
             Shops
-          </a>
-          <a href="#pages" className="hover:text-pink-200 transition-colors">
-            Pages
-          </a>
-          <a href="#news" className="hover:text-pink-200 transition-colors">
+          </Link>
+          <Link to="#news" className="hover:text-pink-200 transition-colors">
             News
-          </a>
-          <a href="#contact" className="hover:text-pink-200 transition-colors">
+          </Link>
+          <Link to="/AdminDashboard" className="hover:text-pink-200 transition-colors">
             Contact
-          </a>
+          </Link>
         </nav>
 
         <div className="flex items-center space-x-4">

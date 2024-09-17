@@ -1,5 +1,7 @@
 // src/components/RegistrationPage.js
-import React, { navigate, useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const RegistrationPage = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +12,7 @@ const RegistrationPage = () => {
     aadharCard: '',
     parentsEmail: '',
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,35 +21,28 @@ const RegistrationPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/api/students/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        console.log('Registration Successful:', data);
+      const response = await axios.post('http://localhost:4000/api/students/register', formData);
+      
+      if (response.status === 201) {
+        console.log('Registration Successful:', response.data);
         alert('Registration successful');
         navigate("/");
       } else {
-        console.error('Error:', data.message);
-        alert('Registration failed: ' + data.message);
+        console.error('Error:', response.data.message);
+        alert('Registration failed: ' + response.data.message);
       }
     } catch (error) {
       console.error('Error during registration:', error);
+      alert('Server error: ' + error.message);
     }
   };
-
+  
 
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Registration Form</h1>
       <form className="space-y-6" onSubmit={handleSubmit}>
-        {/* Student Name */}
+        
         <div>
           <label className="block text-sm font-medium">Student Name</label>
           <input
@@ -60,7 +56,6 @@ const RegistrationPage = () => {
           />
         </div>
 
-        {/* Parents Name */}
         <div>
           <label className="block text-sm font-medium">Parents Name</label>
           <input
@@ -74,7 +69,6 @@ const RegistrationPage = () => {
           />
         </div>
 
-        {/* Date of Birth */}
         <div>
           <label className="block text-sm font-medium">Date of Birth</label>
           <input
@@ -87,7 +81,6 @@ const RegistrationPage = () => {
           />
         </div>
 
-        {/* Gender */}
         <div>
           <label className="block text-sm font-medium">Gender</label>
           <select
@@ -104,7 +97,6 @@ const RegistrationPage = () => {
           </select>
         </div>
 
-        {/* Aadhar Card */}
         <div>
           <label className="block text-sm font-medium">Aadhar Card (Gov ID)</label>
           <input
@@ -118,7 +110,6 @@ const RegistrationPage = () => {
           />
         </div>
 
-        {/* Parents Email */}
         <div>
           <label className="block text-sm font-medium">Parents Email</label>
           <input
@@ -132,7 +123,6 @@ const RegistrationPage = () => {
           />
         </div>
 
-        {/* Submit Button */}
         <button
           type="submit"
           onClick={handleSubmit}

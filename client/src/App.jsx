@@ -6,6 +6,9 @@ import Programs2 from "./Components/Programs2";
 import Footer from "./Components/Footer";
 import EduKidNews from "./Components/News";
 import ApplyNow from "./Components/ApplyNow";
+import LoginAdmin from "./Components/Auth/LoginAdmin";
+import AdminDashboard from "./Components/AdminDashboard/AdminDashboard";
+import NewsAdmin from "./Components/AdminDashboard/NewsAdmin";
 
 function App() {
 
@@ -19,9 +22,12 @@ function App() {
           <Programs />
           <Programs2 />
           <EduKidNews />
-
         </>} />
+        <Route path="/Programs" element={<><Programs /><Programs2 /></>} />
         <Route path="/ApplyNow" element={<><ApplyNow /></>} />
+        <Route path="/AdminDashboard" element={<><AdminDashboard /></>} />
+        <Route path="/NewsAdmin" element={<><NewsAdmin /></>} />
+        <Route path="/Admin" element={<LoginAdmin />} />
       </Routes>
       <Footer />
     </Router>
