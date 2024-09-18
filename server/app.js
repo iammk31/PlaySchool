@@ -14,7 +14,7 @@ dotenv.config({ path: './config/config.env' });
 app.use(express.json());
 app.use(cors(
   {
-    origin: "https://edukids-alpha.vercel.app",
+    origin: "https://play-school-livid.vercel.app",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   }
