@@ -89,7 +89,7 @@ const Navbar = () => {
           <Link to="/Contact" className="hover:text-pink-200 transition-colors">
             Contact
           </Link>
-          <Link to="/admin-dashboard" className="hover:text-pink-200 transition-colors">
+          <Link to="/Admin" className="hover:text-pink-200 transition-colors">
             Admin
           </Link>
         </nav>
