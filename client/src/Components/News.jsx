@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { backendUrl } from '../../utils/config.js';
+import { backendUrl } from "../utils/config.js";
 
 const NewsCard = ({ imageUrl, information, timing }) => {
   return (
