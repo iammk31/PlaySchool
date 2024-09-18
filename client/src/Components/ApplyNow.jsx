@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { backendUrl } from '../utils/config.js';
 
 const RegistrationPage = () => {
   const [formData, setFormData] = useState({
@@ -21,8 +22,10 @@ const RegistrationPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/students/register', formData);
-      
+      const response = await axios.post(
+        `${backendUrl}api/students/register`,
+        formData);
+
       if (response.status === 201) {
         console.log('Registration Successful:', response.data);
         alert('Registration successful');
@@ -36,13 +39,13 @@ const RegistrationPage = () => {
       alert('Server error: ' + error.message);
     }
   };
-  
+
 
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Registration Form</h1>
       <form className="space-y-6" onSubmit={handleSubmit}>
-        
+
         <div>
           <label className="block text-sm font-medium">Student Name</label>
           <input

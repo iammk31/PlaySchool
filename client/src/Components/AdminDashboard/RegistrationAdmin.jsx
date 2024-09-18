@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { backendUrl } from '../../utils/config.js';
 
 const AdminPage = () => {
   const [formData, setFormData] = useState({
@@ -15,7 +16,8 @@ const AdminPage = () => {
   // Fetch students from the backend
   const fetchStudents = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/students/students');
+      const response = await axios.get(
+        `${backendUrl}api/students/students`);
       setStudents(response.data.students);
     } catch (error) {
       console.error('Error fetching students:', error);
@@ -33,7 +35,9 @@ const AdminPage = () => {
   const handleAddStudent = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/students/students', formData);
+      const response = await axios.post(
+        `${backendUrl}api/students/students`,
+        formData);
       if (response.status === 201) {
         alert('Student added successfully');
         setFormData({
@@ -56,7 +60,7 @@ const AdminPage = () => {
 
   const handleDeleteStudent = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/students/students/${id}`);
+      await axios.delete(`${backendUrl}api/students/students/${id}`);
       alert('Student deleted successfully');
       fetchStudents(); // Refresh the student list
     } catch (error) {

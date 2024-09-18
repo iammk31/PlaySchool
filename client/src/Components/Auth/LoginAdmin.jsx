@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { backendUrl } from '../../utils/config.js';
 
 const LoginAdmin = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -14,7 +15,9 @@ const LoginAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/admin/login', formData);
+      const response = await axios.post(
+        `${backendUrl}api/admin/login`,
+        formData);
 
       if (response.status === 200) {
         alert('Login successful');

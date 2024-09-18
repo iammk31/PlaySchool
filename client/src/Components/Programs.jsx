@@ -43,16 +43,16 @@ const programData = [
 ];
 
 const ProgramsSection = () => {
-  const [openProgramId, setOpenProgramId] = useState(null); // State to track the currently open program details
+  const [openProgramId, setOpenProgramId] = useState(null);
 
   const toggleDetails = (id) => {
-    setOpenProgramId(openProgramId === id ? null : id); // Toggle the program's details on/off
+    setOpenProgramId(openProgramId === id ? null : id);
   };
 
   return (
     <section className="py-16 px-8 lg:px-32 bg-pink-50">
 
-      {/* Section Header */}
+
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold text-gray-800 mb-4 underline">Our Programs</h2>
         <p className="text-lg text-gray-600">
@@ -60,7 +60,7 @@ const ProgramsSection = () => {
         </p>
       </div>
 
-      {/* Program Cards */}
+
       <div className="overflow-x-auto">
         <div className="flex space-x-6 md:grid md:grid-cols-3 md:gap-8 md:space-x-0">
           {programData.map((program) => (
@@ -68,31 +68,31 @@ const ProgramsSection = () => {
               key={program.id}
               className={`${program.bgColor} flex-shrink-0 w-80 md:w-auto rounded-xl p-8 shadow-lg relative text-center ${program.textColor} border-2 border-dotted ${program.borderColor}`}
             >
-              {/* Conditionally render the details section if the program is open */}
+
               {openProgramId === program.id && (
                 <div className="mb-6 p-4 bg-orange-100 rounded-md shadow-md">
                   <p className="text-gray-700">{program.details}</p>
                 </div>
               )}
 
-              {/* Program Icon */}
+
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <img src={program.icon} alt={`${program.title} Icon`} />
               </div>
 
-              {/* Program Title and Description */}
+
               <h3 className="text-xl font-semibold mb-4">{program.title}</h3>
               <p className="mb-6">{program.description}</p>
 
-              {/* View Details Button */}
+
               <button
-                onClick={() => toggleDetails(program.id)} // Toggle the details on click
+                onClick={() => toggleDetails(program.id)}
                 className={`${program.btnBgColor} text-white px-6 py-2 rounded-lg shadow-lg ${program.btnHoverBgColor} transition-transform transform hover:scale-105`}
               >
                 {program.buttonLabel}
               </button>
 
-              {/* Border Decoration */}
+
               <div className={`absolute inset-0 border-2 border-dotted ${program.borderColor} rounded-xl pointer-events-none`}></div>
             </div>
           ))}

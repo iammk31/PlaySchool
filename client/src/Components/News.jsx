@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { backendUrl } from '../../utils/config.js';
 
 const NewsCard = ({ imageUrl, information, timing }) => {
   return (
@@ -19,15 +20,15 @@ const NewsCard = ({ imageUrl, information, timing }) => {
 const EduKidNews = () => {
   const [newsData, setNewsData] = useState([]);
 
-  // Fetch news from the backend when the component mounts
   useEffect(() => {
     fetchNews();
   }, []);
 
   const fetchNews = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/news/news");
-      setNewsData(response.data); // Assuming the data is in response.data
+      const response = await axios.get(
+        `${backendUrl}api/news/news`);
+      setNewsData(response.data);
     } catch (error) {
       console.error("Error fetching news:", error);
     }

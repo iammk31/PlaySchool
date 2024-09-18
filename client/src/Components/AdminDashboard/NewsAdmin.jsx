@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { backendUrl } from '../../utils/config.js';
 
 const AdminDashboard = () => {
     const [newsData, setNewsData] = useState([]);
@@ -16,7 +17,7 @@ const AdminDashboard = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get("http://localhost:4000/api/news/news");
+            const response = await axios.get(`${backendUrl}api/news/news`);
             setNewsData(response.data);
         } catch (error) {
             console.error("Error fetching news:", error);
@@ -33,7 +34,9 @@ const AdminDashboard = () => {
     const handleAddNews = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:4000/api/news/news", formData);
+            const response = await axios.post(
+                `${backendUrl}api/news/news`,
+                formData);
             setNewsData([...newsData, response.data]);
             setFormData({ information: "", timing: "", imageUrl: "" });
         } catch (error) {
@@ -44,13 +47,14 @@ const AdminDashboard = () => {
     // Delete news
     const handleDeleteNews = async (id) => {
         try {
-            await axios.delete(`http://localhost:4000/api/news/news/${id}`);
+            await axios.delete(
+                `${backendUrl}api/news/news/${id}`);
             setNewsData(newsData.filter((news) => news._id !== id));
         } catch (error) {
             console.error("Error deleting news:", error);
         }
     };
-    
+
 
     return (
         <div className="min-h-screen p-8 bg-gray-100">
