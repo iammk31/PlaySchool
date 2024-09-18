@@ -4,11 +4,12 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 const Navbar = () => {
   const [navbarVisible, setNavbarVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false); // Admin login state
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false); 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false); 
   const navigate = useNavigate();
-  const location = useLocation(); // Get the current route
+  const location = useLocation(); 
 
-  // Handle scroll visibility
+ 
   const handleScroll = () => {
     if (window.scrollY > lastScrollY) {
       setNavbarVisible(false);
@@ -25,10 +26,10 @@ const Navbar = () => {
     };
   }, [lastScrollY]);
 
-  // Check for token on initial render and when localStorage changes
+  
   useEffect(() => {
     const checkLoginStatus = () => {
-      const adminToken = localStorage.getItem('adminToken'); // Replace with real token logic
+      const adminToken = localStorage.getItem('adminToken'); 
       if (adminToken) {
         setIsAdminLoggedIn(true);
       } else {
@@ -36,10 +37,10 @@ const Navbar = () => {
       }
     };
 
-    // Check when component mounts
+   
     checkLoginStatus();
 
-    // Listen for changes in localStorage (when login state changes)
+   
     window.addEventListener('storage', checkLoginStatus);
 
     return () => {
@@ -47,20 +48,25 @@ const Navbar = () => {
     };
   }, []);
 
-  // Handle logout
+  
   const handleLogout = () => {
-    // Clear admin token and navigate to home page
-    localStorage.removeItem('adminToken'); // Replace with real logout logic
+    
+    localStorage.removeItem('adminToken'); 
     setIsAdminLoggedIn(false);
-    navigate('/'); // Navigate to home or login page
-    window.dispatchEvent(new Event('storage')); // Notify components that the token has been removed
+    navigate('/'); 
+    window.dispatchEvent(new Event('storage')); 
   };
 
-  // Check if the current route requires logout button
+  
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  
   const showLogoutButton = ['/admin-dashboard', '/NewsAdmin', '/RegistrationAdmin'].includes(location.pathname);
 
   return (
-    <header className="bg-teal-500 text-white flex ">
+    <header className="bg-teal-500 text-white flex flex-col md:flex-row">
       <div className="container mx-auto flex justify-between items-center py-3 px-5 flex-1">
         <div className="flex items-center">
           <Link to={'/'}>
@@ -76,7 +82,8 @@ const Navbar = () => {
           </div>
         </div>
 
-        <nav className="hidden md:flex space-x-6 font-medium navbarVisible ? 'top-0' : '-top-24">
+        
+        <nav className="hidden md:flex space-x-6 font-medium">
           <Link to="/About" className="hover:text-pink-200 transition-colors">
             About
           </Link>
@@ -94,6 +101,7 @@ const Navbar = () => {
           </Link>
         </nav>
 
+        
         <div className="flex items-center space-x-4">
           {(isAdminLoggedIn && showLogoutButton) ? (
             <button
@@ -108,7 +116,8 @@ const Navbar = () => {
             </button>
           )}
 
-          <button className="block md:hidden">
+          {/* Hamburger for mobile */}
+          <button className="block md:hidden" onClick={toggleMobileMenu}>
             <svg
               className="w-6 h-6 text-gray-800"
               fill="none"
@@ -126,6 +135,27 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+
+      {/* Mobile */}
+      {mobileMenuOpen && (
+        <nav className="md:hidden bg-teal-500 text-white px-5 py-4 space-y-2">
+          <Link to="/About" className="block hover:text-pink-200 transition-colors">
+            About
+          </Link>
+          <Link to="/Programs" className="block hover:text-pink-200 transition-colors">
+            Programs
+          </Link>
+          <Link to="/News" className="block hover:text-pink-200 transition-colors">
+            News
+          </Link>
+          <Link to="/Contact" className="block hover:text-pink-200 transition-colors">
+            Contact
+          </Link>
+          <Link to="/Admin" className="block hover:text-pink-200 transition-colors">
+            Admin
+          </Link>
+        </nav>
+      )}
     </header>
   );
 };

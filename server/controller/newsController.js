@@ -1,7 +1,6 @@
-// controller/newsController.js
 import News from '../models/NewsAdminModel.js';
 
-// Get all news
+
 export const getAllNews = async (req, res) => {
     try {
         const news = await News.find();
@@ -12,7 +11,7 @@ export const getAllNews = async (req, res) => {
     }
 };
 
-// Create a new news item
+
 export const createNews = async (req, res) => {
     const { information, timing, imageUrl } = req.body;
     try {
@@ -26,7 +25,7 @@ export const createNews = async (req, res) => {
 };
 
 
-// Delete a news item
+
 export const deleteNews = async (req, res) => {
     try {
         const result = await News.deleteOne({ _id: req.params.id });

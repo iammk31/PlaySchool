@@ -1,6 +1,6 @@
 import Student from '../models/student.js';
 
-// Get all students for admin
+
 export const getAllStudents = async (req, res) => {
     try {
         const students = await Student.find();
@@ -13,7 +13,7 @@ export const getAllStudents = async (req, res) => {
 };
 
 
-// Add a new student (admin operation)
+
 export const addStudent = async (req, res) => {
     const { studentName, parentsName, dob, gender, aadharCard, parentsEmail } = req.body;
     try {
@@ -26,7 +26,7 @@ export const addStudent = async (req, res) => {
     }
 };
 
-// Delete a student by ID (admin operation)
+
 export const deleteStudent = async (req, res) => {
     try {
         const result = await Student.deleteOne({ _id: req.params.id });

@@ -26,7 +26,7 @@ app.use('/api/students', studentRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/news', newsRoutes); 
 
-// Test route to check server status
+
 app.get('/', (req, res) => {
   res.send('Server is running');
 });

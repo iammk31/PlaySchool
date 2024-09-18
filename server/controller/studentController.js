@@ -1,6 +1,6 @@
 import Student from '../models/student.js';
 
-// Controller to handle student registration
+
 const registerStudent = async (req, res) => {
     const { studentName, parentsName, dob, gender, aadharCard, parentsEmail } = req.body;
 

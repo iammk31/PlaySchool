@@ -1,4 +1,3 @@
-// routes/studentRoute.js
 import express from 'express';
 import registerStudent from '../controller/studentController.js'; 
 import loginAdmin from '../controller/LoginAdminController.js';
@@ -12,13 +11,13 @@ router.post('/register', registerStudent);
 router.post('/login', loginAdmin);
 
 // News routes
-router.get('/news', getAllNews); // Route to get all news
-router.post('/news', createNews); // Route to create news
-router.delete('/news/:id', deleteNews); // Route to delete news by ID
+router.get('/news', getAllNews); 
+router.post('/news', createNews); 
+router.delete('/news/:id', deleteNews); 
 
 // Admin student routes
-router.get('/students', getAllStudents); // Route to get all students
-router.post('/students', addStudent); // Route to add a student
-router.delete('/students/:id', deleteStudent); // Route to delete a student by ID
+router.get('/students', getAllStudents); 
+router.post('/students', addStudent); 
+router.delete('/students/:id', deleteStudent); 
 
 export default router;
