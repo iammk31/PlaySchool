@@ -37,30 +37,33 @@ const Navbar = () => {
             />
           </Link>
           <div className="ml-2">
-            <h1 className="text-2xl font-bold text-green-700">EduKid</h1>
+            <h1 className="text-2xl font-bold text-green-700">EduKids</h1>
             <p className="text-xs text-black">Making learning fun</p>
           </div>
         </div>
 
 
         <nav className="hidden md:flex space-x-6 font-medium navbarVisible ? 'top-0' : '-top-24">
-          <Link to="#about" className="hover:text-pink-200 transition-colors">
+          <Link to="/About" className="hover:text-pink-200 transition-colors">
             About
           </Link>
+
           <Link
             to="/Programs"
-            className="hover:text-pink-200 transition-colors"
-          >
+            className="hover:text-pink-200 transition-colors">
             Programs
           </Link>
-          <Link to="#shops" className="hover:text-pink-200 transition-colors">
-            Shops
-          </Link>
+
           <Link to="/News" className="hover:text-pink-200 transition-colors">
             News
           </Link>
-          <Link to="/AdminDashboard" className="hover:text-pink-200 transition-colors">
+
+          <Link to="/Contact" className="hover:text-pink-200 transition-colors">
             Contact
+          </Link>
+
+          <Link to="/AdminDashboard" className="hover:text-pink-200 transition-colors">
+            Admin
           </Link>
         </nav>
 

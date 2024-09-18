@@ -10,6 +10,8 @@ import AdminDashboard from "./Components/AdminDashboard/AdminDashboard";
 import NewsAdmin from "./Components/AdminDashboard/NewsAdmin";
 import News from "./Components/News";
 import RegistrationAdmin from "./Components/AdminDashboard/RegistrationAdmin";
+import Contact from "./Components/Contact";
+import About from "./Components/About";
 
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
           <Home />
           <Programs />
           <Programs2 />
+          <Contact />
         </>} />
         <Route path="/Programs" element={<><Programs /><Programs2 /></>} />
         <Route path="/ApplyNow" element={<><ApplyNow /></>} />
@@ -31,6 +34,9 @@ function App() {
         <Route path="/Admin" element={<LoginAdmin />} />
         <Route path="/News" element={<News />} />
         <Route path="/RegistrationAdmin" element={<RegistrationAdmin />} />
+        <Route path="/Contact" element={<Contact />} />
+        <Route path="/About" element={<About />} />
+
       </Routes>
       <Footer />
     </Router>

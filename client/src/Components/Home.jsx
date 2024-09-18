@@ -1,17 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
 
         <div className="bg-pink-50 min-h-screen">
             <section className="py-16 px-8 lg:px-32 flex flex-col lg:flex-row items-center">
-                <div className="lg:w-1/2 space-y-4">
+                <div className="lg:w-1/2 space-y-5">
                     <h2 className="text-green-600 text-xl font-semibold">Kindergarten Program</h2>
                     <h1 className="text-5xl font-bold text-gray-800">Best Children's Education Curriculum</h1>
-                    <p className="text-gray-600">Admission Open 20-24 April</p>
-                    <button className="bg-orange-400 hover:bg-orange-500 text-white px-6 py-3 rounded-3xl">
-                        Apply Now
-                    </button>
+                    <p className="text-gray-600 gap-10">Admission Open 20-24 April</p>
+                    <Link to="/ApplyNow">
+                        <button className="bg-orange-400 hover:bg-orange-500 text-white px-6 py-3 rounded-3xl">
+                            Apply Now
+                        </button>
+                    </Link>
                 </div>
 
                 <div className="lg:w-1/2 mt-12 lg:mt-0 relative">
