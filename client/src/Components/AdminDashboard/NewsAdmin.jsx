@@ -4,8 +4,8 @@ import axios from "axios";
 const AdminDashboard = () => {
     const [newsData, setNewsData] = useState([]);
     const [formData, setFormData] = useState({
-        title: "",
-        author: "",
+        information: "",
+        timing: "",
         imageUrl: "",
     });
 
@@ -35,7 +35,7 @@ const AdminDashboard = () => {
         try {
             const response = await axios.post("http://localhost:4000/api/news/news", formData);
             setNewsData([...newsData, response.data]);
-            setFormData({ title: "", author: "", imageUrl: "" });
+            setFormData({ information: "", timing: "", imageUrl: "" });
         } catch (error) {
             console.error("Error adding news:", error);
         }
@@ -56,26 +56,26 @@ const AdminDashboard = () => {
         <div className="min-h-screen p-8 bg-gray-100">
             <form onSubmit={handleAddNews} className="mb-8">
                 <div className="mb-4">
-                    <label className="block text-lg font-medium">Title</label>
+                    <label className="block text-lg font-medium">Information</label>
                     <input
                         type="text"
-                        name="title"
+                        name="information"
                         value={formData.title}
                         onChange={handleInputChange}
                         className="border p-2 rounded-md w-full"
-                        placeholder="Enter news title"
+                        placeholder="Enter news information"
                         required
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-lg font-medium">Author</label>
+                    <label className="block text-lg font-medium">Timing</label>
                     <input
                         type="text"
-                        name="author"
+                        name="timing"
                         value={formData.author}
                         onChange={handleInputChange}
                         className="border p-2 rounded-md w-full"
-                        placeholder="Enter author name"
+                        placeholder="Enter timing"
                         required
                     />
                 </div>
@@ -104,9 +104,9 @@ const AdminDashboard = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {newsData.map((news) => (
                     <div key={news._id} className="bg-white p-4 rounded-lg shadow-lg">
-                        <img src={news.imageUrl} alt={news.title} className="w-full h-40 object-cover rounded-md" />
-                        <h2 className="text-lg font-semibold mt-4">{news.title}</h2>
-                        <p className="text-gray-600">by {news.author}</p>
+                        <img src={news.imageUrl} alt={news.information} className="w-full h-40 object-cover rounded-md" />
+                        <h2 className="text-lg font-semibold mt-4">{news.information}</h2>
+                        <p className="text-gray-600">{news.timing}</p>
                         <button
                             onClick={() => handleDeleteNews(news._id)}
                             className="mt-4 bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600"

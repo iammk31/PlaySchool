@@ -29,7 +29,7 @@ function App() {
         </>} />
         <Route path="/Programs" element={<><Programs /><Programs2 /></>} />
         <Route path="/ApplyNow" element={<><ApplyNow /></>} />
-        <Route path="/AdminDashboard" element={<><AdminDashboard /></>} />
+        <Route path="/admin-dashboard" element={<><AdminDashboard /></>} />
         <Route path="/NewsAdmin" element={<><NewsAdmin /></>} />
         <Route path="/Admin" element={<LoginAdmin />} />
         <Route path="/News" element={<News />} />

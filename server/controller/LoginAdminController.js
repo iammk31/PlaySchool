@@ -1,32 +1,22 @@
-import Admin from '../models/LoginAdmin.js';
-import jwt from 'jsonwebtoken';
+import LoginAdmin from "../models/LoginAdmin.js";
 
-// Generate JWT token
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
-};
-
-// Controller for admin login
-const loginAdmin = async (req, res) => {
+export const loginAdmin = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Check if admin exists
-    const admin = await Admin.findOne({ email });
-    if (admin && (await admin.matchPassword(password))) {
-      // Successful login, generate JWT token
+    const admin = await LoginAdmin.findOne({ email });
+
+    if (admin) {
       res.json({
         _id: admin._id,
         email: admin.email,
-        token: generateToken(admin._id),
       });
     } else {
-      res.status(401).json({ message: 'Invalid email or password' });
+      res.status(401).json({ message: "Invalid email or password" });
     }
   } catch (error) {
-    console.error('Error during admin login:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: error.message });
   }
-};
+}
 
 export default loginAdmin;

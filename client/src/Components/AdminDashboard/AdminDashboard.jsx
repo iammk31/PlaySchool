@@ -6,15 +6,13 @@ const Dashboard = () => {
 
   const cards = [
     { title: 'News', path: '/NewsAdmin' },
-    { title: 'Programs', path: '' },
-    { title: 'Registration', path: '/RegistrationAdmin' },
-    { title: 'Shops', path: '/shops' },
+    { title: 'Registration', path: '/RegistrationAdmin' }
   ];
 
   return (
     <div className="min-h-52 bg-gray-100 flex flex-col justify-center items-center">
       <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
-      <div className="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
         {cards.map((card, index) => (
           <div
             key={index}

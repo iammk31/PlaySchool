@@ -14,9 +14,9 @@ export const getAllNews = async (req, res) => {
 
 // Create a new news item
 export const createNews = async (req, res) => {
-    const { title, author, imageUrl } = req.body;
+    const { information, timing, imageUrl } = req.body;
     try {
-        const newNews = new News({ title, author, imageUrl });
+        const newNews = new News({ information, timing, imageUrl });
         const savedNews = await newNews.save();
         res.status(201).json(savedNews);
     } catch (error) {

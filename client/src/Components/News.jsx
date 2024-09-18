@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const NewsCard = ({ imageUrl, title, author }) => {
+const NewsCard = ({ imageUrl, information, timing }) => {
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden bg-opacity-0 border-5 border-black">
       <img src={imageUrl} alt="news" className="w-full h-45 object-cover" />
       <div className="p-4">
-        <h2 className="text-lg font-semibold text-gray-800 mb-2">{title}</h2>
+        <h2 className="text-lg font-semibold text-gray-800 mb-2">{information}</h2>
         <div className="text-gray-600 text-sm">
-          <p>by {author}</p>
-          <p>5 Comments</p>
+          <p>{timing}</p>
+          <p>Be On Time</p>
         </div>
       </div>
     </div>
@@ -46,8 +46,8 @@ const EduKidNews = () => {
               <NewsCard
                 key={index}
                 imageUrl={news.imageUrl}
-                title={news.title}
-                author={news.author}
+                information={news.information}
+                timing={news.timing}
               />
             ))
           ) : (

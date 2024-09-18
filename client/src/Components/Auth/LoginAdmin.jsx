@@ -15,9 +15,12 @@ const LoginAdmin = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:4000/api/admin/login', formData);
+
       if (response.status === 200) {
         alert('Login successful');
-        navigate('/admin-dashboard'); 
+        localStorage.setItem('adminToken', response.data.token);
+        navigate('/admin-dashboard');
+        window.dispatchEvent(new Event('storage'));
       } else {
         setError(response.data.message || 'Login failed');
       }

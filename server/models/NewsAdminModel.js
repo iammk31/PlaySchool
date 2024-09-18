@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 
 const newsSchema = new mongoose.Schema({
-  title: {
+  information: {
     type: String,
     required: [true, 'Title is required'],
   },
-  author: {
+  timing: {
     type: String,
     required: [true, 'Author is required'],
   },
