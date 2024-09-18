@@ -89,6 +89,9 @@ const Navbar = () => {
           <Link to="/Contact" className="hover:text-pink-200 transition-colors">
             Contact
           </Link>
+          <Link to="/admin-dashboard" className="hover:text-pink-200 transition-colors">
+            Admin
+          </Link>
         </nav>
 
         <div className="flex items-center space-x-4">
