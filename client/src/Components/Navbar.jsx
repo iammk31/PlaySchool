@@ -4,12 +4,12 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 const Navbar = () => {
   const [navbarVisible, setNavbarVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false); 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false); 
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation(); 
+  const location = useLocation();
 
- 
+
   const handleScroll = () => {
     if (window.scrollY > lastScrollY) {
       setNavbarVisible(false);
@@ -26,10 +26,10 @@ const Navbar = () => {
     };
   }, [lastScrollY]);
 
-  
+
   useEffect(() => {
     const checkLoginStatus = () => {
-      const adminToken = localStorage.getItem('adminToken'); 
+      const adminToken = localStorage.getItem('adminToken');
       if (adminToken) {
         setIsAdminLoggedIn(true);
       } else {
@@ -37,10 +37,10 @@ const Navbar = () => {
       }
     };
 
-   
+
     checkLoginStatus();
 
-   
+
     window.addEventListener('storage', checkLoginStatus);
 
     return () => {
@@ -48,21 +48,21 @@ const Navbar = () => {
     };
   }, []);
 
-  
+
   const handleLogout = () => {
-    
-    localStorage.removeItem('adminToken'); 
+
+    localStorage.removeItem('adminToken');
     setIsAdminLoggedIn(false);
-    navigate('/'); 
-    window.dispatchEvent(new Event('storage')); 
+    navigate('/');
+    window.dispatchEvent(new Event('storage'));
   };
 
-  
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  
+
   const showLogoutButton = ['/admin-dashboard', '/NewsAdmin', '/RegistrationAdmin'].includes(location.pathname);
 
   return (
@@ -82,7 +82,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        
+
         <nav className="hidden md:flex space-x-6 font-medium">
           <Link to="/About" className="hover:text-pink-200 transition-colors">
             About
@@ -96,12 +96,9 @@ const Navbar = () => {
           <Link to="/Contact" className="hover:text-pink-200 transition-colors">
             Contact
           </Link>
-          <Link to="/Admin" className="hover:text-pink-200 transition-colors">
-            Admin
-          </Link>
         </nav>
 
-        
+
         <div className="flex items-center space-x-4">
           {(isAdminLoggedIn && showLogoutButton) ? (
             <button
@@ -150,9 +147,6 @@ const Navbar = () => {
           </Link>
           <Link to="/Contact" className="block hover:text-pink-200 transition-colors">
             Contact
-          </Link>
-          <Link to="/Admin" className="block hover:text-pink-200 transition-colors">
-            Admin
           </Link>
         </nav>
       )}

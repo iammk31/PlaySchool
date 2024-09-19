@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -20,21 +21,17 @@ const Footer = () => {
                     <div className="flex flex-col items-center space-y-1">
                         <h2 className="font-bold text-xl">Quick Links</h2>
                         <ul className="space-y-1 text-center">
-                            <li><a href="#about" className="hover:underline">About</a></li>
-                            <li><a href="#courses" className="hover:underline">Courses</a></li>
-                            <li><a href="#shop" className="hover:underline">Shop</a></li>
-                            <li><a href="#contact" className="hover:underline">Contact</a></li>
-                            <li><a href="#blog" className="hover:underline">Blog</a></li>
+                            <li><Link to="/About" className="hover:underline">About</Link></li>
+                            <li><Link to="/Contact" className="hover:underline">Contact</Link></li>
+                            <li><Link to="/Programs" className="hover:underline">Programs</Link></li>
                         </ul>
                     </div>
 
                     <div className="flex flex-col items-center space-y-1">
                         <ul className="space-y-2 text-center ">
-                            <li><a href="#recently" className="hover:underline">Recently Viewed</a></li>
-                            <li><a href="#programs" className="hover:underline">New Programs</a></li>
-                            <li><a href="#curriculum" className="hover:underline">Curriculums</a></li>
-                            <li><a href="#career" className="hover:underline">Career</a></li>
-                            <li><a href="#school" className="hover:underline">School Stuff</a></li>
+                            <li><Link to="#recently" className="hover:underline">Recently Viewed</Link></li>
+                            <li><Link to="/News" className="hover:underline">News Programs</Link></li>
+                            <li><Link to="#curriculum" className="hover:underline">Curriculums</Link></li>
                         </ul>
                     </div>
 

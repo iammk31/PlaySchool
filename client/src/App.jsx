@@ -12,6 +12,7 @@ import News from "./Components/News";
 import RegistrationAdmin from "./Components/AdminDashboard/RegistrationAdmin";
 import Contact from "./Components/Contact";
 import About from "./Components/About";
+import PrivateRoute from './Components/PrivateRoute';
 
 
 function App() {
@@ -29,8 +30,31 @@ function App() {
         </>} />
         <Route path="/Programs" element={<><Programs /><Programs2 /></>} />
         <Route path="/ApplyNow" element={<><ApplyNow /></>} />
-        <Route path="/admin-dashboard" element={<><AdminDashboard /></>} />
-        <Route path="/NewsAdmin" element={<><NewsAdmin /></>} />
+        {/* Protect these routes */}
+        <Route
+          path="/admin-dashboard"
+          element={
+            <PrivateRoute>
+              <AdminDashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/NewsAdmin"
+          element={
+            <PrivateRoute>
+              <NewsAdmin />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/RegistrationAdmin"
+          element={
+            <PrivateRoute>
+              <RegistrationAdmin />
+            </PrivateRoute>
+          }
+        />
         <Route path="/Admin" element={<LoginAdmin />} />
         <Route path="/News" element={<News />} />
         <Route path="/RegistrationAdmin" element={<RegistrationAdmin />} />
